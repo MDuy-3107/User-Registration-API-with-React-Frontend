@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 // Use /api for Vercel deployment, or VITE_API_URL for custom backend
 const API_URL = import.meta.env.VITE_API_URL || '/api';
