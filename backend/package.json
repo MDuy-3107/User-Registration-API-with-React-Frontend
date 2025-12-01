@@ -1,7 +1,7 @@
 {
   "name": "user-registration-backend",
   "version": "1.0.0",
-  "description": "User Registration API with NestJS",
+  "description": "User-Registration API with NestJS",
   "main": "dist/main.js",
   "engines": {
     "node": "20.x"

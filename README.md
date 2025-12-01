@@ -1,6 +1,6 @@
-# User Registration System
+# User-Registration
 
-A complete full-stack User Registration System built with **NestJS** backend and **React** frontend, featuring secure authentication, form validation, and a beautiful UI.
+A complete full-stack User Registration application built with **NestJS** backend and **React** frontend, featuring secure authentication, form validation, and a beautiful UI.
 
 ## 🎯 Features
 
