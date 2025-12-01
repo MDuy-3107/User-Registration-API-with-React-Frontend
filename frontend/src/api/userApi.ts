@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-// Backend API URL - set via environment variable
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// Backend API URL - set via environment variable or use production URL
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.MODE === 'production' 
+    ? 'https://user-registration-api-with-react-3ptw.onrender.com'
+    : 'http://localhost:3001');
 
 export const api = axios.create({
   baseURL: API_URL,
