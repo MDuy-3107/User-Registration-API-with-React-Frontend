@@ -8,10 +8,11 @@ dotenv.config();
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: process.env.DB_PATH || './database.sqlite',
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // Auto-create tables (for development only)
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
     }),
     UserModule,
   ],
