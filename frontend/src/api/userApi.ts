@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 // Use /api for Vercel deployment, or VITE_API_URL for custom backend
 const API_URL = import.meta.env.VITE_API_URL || '/api';
@@ -21,6 +21,10 @@ export interface RegisterResponse {
     email: string;
     createdAt: string;
   };
+}
+
+export interface ApiError {
+  message: string;
 }
 
 export const registerUser = async (data: RegisterData): Promise<RegisterResponse> => {
