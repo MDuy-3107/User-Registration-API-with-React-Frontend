@@ -6,7 +6,7 @@ A complete full-stack User Registration application built with **NestJS** backen
 
 ### Backend (NestJS)
 - ✅ RESTful API with `/user/register` endpoint
-- ✅ SQLite database integration with TypeORM
+- ✅ PostgreSQL database integration with TypeORM (Neon.tech)
 - ✅ Password hashing with bcrypt
 - ✅ Input validation with class-validator
 - ✅ Error handling with meaningful messages
@@ -29,7 +29,7 @@ Before you begin, ensure you have the following installed:
 - **Node.js** (v18 or higher)
 - **npm** or **yarn**
 
-**Note:** SQLite is used as the database and is included in the project dependencies - no separate database installation required!
+**Note:** PostgreSQL (Neon.tech) is used as the database - a free cloud PostgreSQL instance. No local database installation required!
 
 ## 🚀 Installation & Setup
 
@@ -37,7 +37,7 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 git clone <your-repo-url>
-cd 22120080_10
+cd User-Registration
 ```
 
 ### 2. Backend Setup
@@ -51,15 +51,17 @@ npm install
 
 # Configure environment variables
 # Create .env file (or use the existing one)
-# Update MONGODB_URI if needed
 ```
 
 **Backend `.env` file:**
 ```env
 PORT=3001
 FRONTEND_URL=http://localhost:5173
-DB_PATH=./database.sqlite
+NODE_ENV=development
+DATABASE_URL=postgresql://user:password@host:5432/dbname
 ```
+
+**Note:** Get your free PostgreSQL database URL from [Neon.tech](https://neon.tech) or use Railway/Render PostgreSQL addon.
 
 **Run the backend:**
 ```bash
@@ -110,7 +112,7 @@ The frontend will run on `http://localhost:5173`
 ## 📁 Project Structure
 
 ```
-22120080_10/
+User-Registration/
 ├── backend/                    # NestJS Backend
 │   ├── src/
 │   │   ├── user/
@@ -124,7 +126,6 @@ The frontend will run on `http://localhost:5173`
 │   │   ├── app.module.ts                   # Root Module
 │   │   └── main.ts                         # Application Entry
 │   ├── .env                                # Environment Variables
-│   ├── database.sqlite                     # SQLite Database
 │   ├── package.json
 │   └── tsconfig.json
 │
@@ -132,10 +133,12 @@ The frontend will run on `http://localhost:5173`
     ├── src/
     │   ├── api/
     │   │   └── userApi.ts                  # API Client
+    │   ├── components/
+    │   │   └── Layout.tsx                  # Layout Component
     │   ├── pages/
     │   │   ├── HomePage.tsx                # Home Page
     │   │   ├── LoginPage.tsx               # Login Page
-    │   │   └── SignUpPage.tsx              # Sign Up Page
+    │   │   └── RegisterPage.tsx            # Register/Sign Up Page
     │   ├── App.tsx                         # Router Configuration
     │   ├── main.tsx                        # Application Entry
     │   └── index.css                       # Global Styles
@@ -192,7 +195,7 @@ Register a new user.
 
 ### Backend
 - **NestJS** - Progressive Node.js framework
-- **SQLite** - Lightweight SQL database
+- **PostgreSQL** - Powerful open-source relational database (Neon.tech cloud)
 - **TypeORM** - SQL ORM for TypeScript
 - **bcrypt** - Password hashing
 - **class-validator** - DTO validation
@@ -232,8 +235,9 @@ Register a new user.
 1. Sign up at [Railway.app](https://railway.app)
 2. Create new project
 3. Deploy from GitHub repository
-4. Add MongoDB plugin
-5. Set environment variables
+4. Add PostgreSQL database plugin
+5. Set environment variables (PORT, FRONTEND_URL)
+6. DATABASE_URL will be auto-configured by Railway
 
 **Option 2: Render**
 1. Sign up at [Render.com](https://render.com)
@@ -282,9 +286,9 @@ npm run lint         # Lint code
 ## 🐛 Troubleshooting
 
 ### Database Issues
-- SQLite database file will be created automatically on first run
-- Check `DB_PATH` in backend `.env` if you want to change database location
-- Database file: `backend/database.sqlite`
+- Ensure `DATABASE_URL` in backend `.env` is correctly configured
+- Get a free PostgreSQL database from [Neon.tech](https://neon.tech)
+- Database tables will be created automatically on first run (TypeORM synchronize)
 
 ### CORS Errors
 - Verify `FRONTEND_URL` in backend `.env` matches your frontend URL
